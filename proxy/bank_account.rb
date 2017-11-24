@@ -6,6 +6,13 @@ class BankAccount
     @balance = balance
   end
 
+  # Rubyでは未定義のメソッド呼び出しが発生 => method_missingが呼び出される
+  # method_missingを用いることでdeposit, withdrawを省略
+  def method_missing(name, *args)
+    check_access
+    @real_object.send(name, *args)
+  end
+
   # 出金
   def deposit(amount)
     @balance += amount

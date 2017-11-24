@@ -1,13 +1,15 @@
 require "./bank_account.rb"
-require "./virtual_account_proxy.rb"
+require "./bank_account_proxy.rb"
 
-
-proxy = VirtualAccountProxy.new(100)
-#=> VirtualAccountPoxyを生成しました。BankAccountはまだ生成していません。
-puts proxy.announce
-#=> Virtual Account Proxyが担当するアナウンスです
+# ログインユーザーの場合
+account = BankAccount.new(100)
+# login_userの部分はこの処理を行うMac/Linuxのログイン中のユーザー名に書き換えて下さい
+proxy = BankAccountProxy.new(account, "yokoyama")
 puts proxy.deposit(50)
-#=> BankAccountを生成しました
 #=> 150
 puts proxy.withdraw(10)
 #=> 140
+# ログインユーザーではない場合
+account = BankAccount.new(100)
+proxy = BankAccountProxy.new(account, "no_login_user")
+puts proxy.deposit(50)
