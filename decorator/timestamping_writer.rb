@@ -1,7 +1,5 @@
-require "./writer_decorator"
-
-class TimestampingWriter < WriterDecorator
+module TimestampingWriter
   def write_line(line)
-    @real_writer.write_line("#{Time.new} : #{line}")
+    super("#{Time.new} : #{line}")
   end
 end
