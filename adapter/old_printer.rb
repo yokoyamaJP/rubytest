@@ -3,11 +3,11 @@ class OldPrinter
     @string = string.dup
   end
 
-  def show_with_paren
-    puts "(#{@string})"
+  def show_with_bracket
+    puts "[#{@string}]"
   end
 
-  def show_with_aster
-    puts "*#{@string}*"
+  def show_with_asterisk
+    puts "**#{@string}**"
   end
 end

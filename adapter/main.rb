@@ -1,7 +1,14 @@
 require "./printer.rb"
-require "./adapter.rb"
+require "./old_printer.rb"
 
-printer = Printer.new(Adapter.new("Hello"))
-printer.print_weak
+text = OldPrinter.new("Hello")
+def text.print_weak
+  show_with_bracket
+end
+def text.print_strong
+  show_with_asterisk
+end
 
-printer.print_strong
+p = Printer.new(text)
+p.print_weak
+p.print_strong
