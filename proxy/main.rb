@@ -1,14 +1,13 @@
 require "./bank_account.rb"
-require "./bank_account_proxy.rb"
+require "./virtual_account_proxy.rb"
 
-account = BankAccount.new(100)
 
-proxy = BankAccountProxy.new(account, "yokoyama")
+proxy = VirtualAccountProxy.new(100)
+#=> VirtualAccountPoxyを生成しました。BankAccountはまだ生成していません。
+puts proxy.announce
+#=> Virtual Account Proxyが担当するアナウンスです
 puts proxy.deposit(50)
+#=> BankAccountを生成しました
+#=> 150
 puts proxy.withdraw(10)
-
-
-account = BankAccount.new(100)
-
-proxy = BankAccountProxy.new(account, "no_login_user")
-puts proxy.deposit(50)
+#=> 140

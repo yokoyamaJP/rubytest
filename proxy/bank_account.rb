@@ -2,6 +2,7 @@ class BankAccount
   attr_reader :balance
 
   def initialize(balance)
+    puts "BankAccountを生成しました"
     @balance = balance
   end
 
